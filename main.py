@@ -17,7 +17,7 @@ def get_valid_input(prompt: str) -> int:
             print("Netinkama įvestis. Įvesk (1, 2, 3) arba 'pabaiga' norint užbaigti žaidimą")
 
 def kryziukai_nuliukai() -> None:
-    board = bu.create_board()
+    board = bu.create_board()  
     # tai alternatyvi funkcija  vietoje 'current_player = "X"', loop funkcija leidžia pradedančiam žaidėjui pasirinkti simbolį. 
     while True:
 
@@ -32,7 +32,7 @@ def kryziukai_nuliukai() -> None:
         else:
             print("Prašau pasirinkti 'X' arba '0'.")
 
-    while True:  #Žaidimas naudoja get_valid_input funkciją (loop) tiek eilutės, tiek stulpelio įvedimui užtikrinti, kad būtų priimami tik tinkami skaičiai arba komanda 'pabaiga'
+    while True:  # loop naudoja get_valid_input funkciją eilutės ir stulpelio įvedimui užtikrinti, kad būtų priimami tik tinkami skaičiai arba komanda 'pabaiga'
         bu.print_board(board)
 
         row = get_valid_input(f"žaidėjau {current_player}, norėdamas pasirinkti eilutę, įvesk (1, 2, 3) arba 'pabaiga' norint užbaigti žaidimą: ")
@@ -48,19 +48,15 @@ def kryziukai_nuliukai() -> None:
 
         col = get_valid_input(f"žaidėjau {current_player}, norėdamas pasirinkti stulpelį, įvesk (1, 2, 3) arba 'pabaiga' norint užbaigti žaidimą: ")
 
-        # if col == "pabaiga":
-        #     print("Žaidimas baigtas")
-        #     break
         if col is None:
-            return
-            
+            return   
 
         if board[row][col] == " ":
             board[row][col] = current_player
 
             if bu.check_winner(board, current_player):
                 bu.print_board(board)
-                print(f"Žaidėjas {current_player} laimėjo!") #jeigu check winner funkcija nustato laimėtoja, naudojama string informuoti kuris žaidėjas laimėjo.
+                print(f"Žaidėjas {current_player} laimėjo!") #jeigu check winner funkcija nustato laimėtoją, naudojama string informuoti kuris žaidėjas laimėjo.
                 break
             elif bu.is_full(board):
                 bu.print_board(board)
