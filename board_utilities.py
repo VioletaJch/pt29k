@@ -19,7 +19,9 @@ def check_winner(board: list, player: str) -> bool:
     #  Patikrina, ar dabartinis žaidėjas laimėjo
     # Tikrinamos eilutės, stulpeliai ir įstrižainės
     for i in range(3): # for cikle funkcija tikrina visas tris lentos eilutes.
-        if all([cell == player for cell in board[i]]):  # Tikrina eilutes. Funkcija naudoja all metodą su list comprehention, kad patikrintų , ar visi elementai board[i] yra vienodi ir atitinka žaidėjo simbolį.
+
+        if all([cell == player for cell in board[i]]):  # Funkcija tikrina eilutes. Funkcija naudoja all python extensioną su list comprehention, kad patikrintų , 
+            #ar visi elementai board[i] yra vienodi ir atitinka žaidėjo simbolį. Jeigu visi eilutės langeliai užimti su žaidėjo simboliu, all funkcija grąžina true nustatant laimėjimą.
             return True
         if all([board[j][i] == player for j in range(3)]):  # Tikrina stulpelius
             return True
